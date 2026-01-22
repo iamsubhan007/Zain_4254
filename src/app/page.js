@@ -293,7 +293,7 @@ export default function BillingPage() {
   const dailyTotal=filteredBills.reduce((s,b)=>s+b.items.reduce((t,i)=>t+i.price*i.qty+(i.addons?.reduce((a,ad)=>a+(ad.price||0),0)||0),0),0);
 
   return (
-    <div className="max-w-7xl mx-auto p-4">
+    <div className="max-w-7xl mx-auto p-4 min-h-screen">
       <header className="flex flex-wrap justify-between items-center mb-4 gap-2">
         <h1 className="text-2xl font-bold  fixed top-1 z-20 space-x-3 bg-slate-600 p-2 rounded-md">Haq Bahu Naan Shop</h1>
         <div className="flex gap-2 flex-wrap mt-12">
@@ -319,7 +319,7 @@ export default function BillingPage() {
 
       {/* MENU */}
       {!activeMain && (
-        <div className={`grid gap-4 ${view==="grid"?"grid-cols-2 sm:grid-cols-3 md:grid-cols-4":"grid-cols-1"}`}>
+        <div className={`grid gap-4 bg-slate-950 ${view==="grid"?"grid-cols-2 sm:grid-cols-3 md:grid-cols-4":"grid-cols-1"}`}>
           {MENU.map(m=>(<div key={m.id} onClick={()=>setActiveMain(m)} className="p-4 border rounded cursor-pointer hover:scale-110 hover:bg-gray-300 hover:text-red-900"><h2 className="font-semibold">{m.name}</h2></div>))}
         </div>
       )}
@@ -355,7 +355,7 @@ export default function BillingPage() {
       </section>
 
       {/* STICKY DAILY TOTAL */}
-      <div className="fixed bottom-0 left-0 right-0 bg-slate-800 border-t p-2 flex flex-col">
+      <div className="fixed bottom-0 left-0 right-0 text-white bg-slate-800 border-t p-2 flex flex-col">
         <span className="font-bold">Daily Total: Rs {dailyTotal}</span>
         {cart.length>0 && <MiniCart cart={cart} removeFromCart={removeFromCart} />}
       </div>
