@@ -293,7 +293,7 @@ export default function BillingPage() {
   const dailyTotal=filteredBills.reduce((s,b)=>s+b.items.reduce((t,i)=>t+i.price*i.qty+(i.addons?.reduce((a,ad)=>a+(ad.price||0),0)||0),0),0);
 
   return (
-    <div className="max-w-7xl mx-auto p-4 min-h-screen">
+    <div className="max-w-7xl mx-auto p-4 min-h-screen bg-gray-900 text-white">
       <header className="flex flex-wrap justify-between items-center mb-4 gap-2">
         <h1 className="text-2xl font-bold  fixed top-1 z-20 space-x-3 bg-slate-600 p-2 rounded-md">Haq Bahu Naan Shop</h1>
         <div className="flex gap-2 flex-wrap mt-12">
