@@ -367,7 +367,7 @@ function SubItemCard({ item, onAdd }) {
   const [qty,setQty]=useState(1);
   const [addons,setAddons]=useState([]);
   return (
-    <div className="border p-3 rounded">
+    <div className="border p-3 rounded bg-gray-900 text-white">
       <h3 className="font-semibold">{item.name}</h3>
       <p className="text-sm">Rs {item.price}</p>
       <div className="mt-2 space-y-1">
@@ -399,7 +399,7 @@ function BillCard({ bill,setBills }) {
   };
 
   return (
-    <div className="border rounded p-3">
+    <div className="border rounded p-3 bg-gray-900 text-white">
       <p className="text-xs text-gray-500">{bill.time}</p>
       {bill.items.map((i,idx)=>(<div key={idx} className="flex flex-col gap-1 text-sm mb-1">
         <div className="flex justify-between items-center"><span>{i.name} x {i.qty}</span><span>= Rs {i.qty*i.price + (i.addons?.reduce((a,ad)=>a+(ad.price||0),0)||0)}</span></div>
@@ -418,10 +418,10 @@ function BillCard({ bill,setBills }) {
 function MiniCart({ cart, removeFromCart }) {
   const total = cart.reduce((s, i) => s + i.price * i.qty + (i.addons?.reduce((a, ad) => a + (ad.price || 0), 0) || 0), 0);
   return (
-    <div className="bg-slate-700 border-gray-300 p-2 flex items-center">
+    <div className="bg-slate-700 text-white border-gray-300 p-2 flex items-center">
       <div className="gap-2 md:h-20 h-20 sticky z-50 space-x-2 bottom-4 overflow-x-auto whitespace-nowrap">
         {cart.map((i, idx) => (
-          <div key={idx} className="flex items-center gap-1 bg-slate-600 p-1 rounded">
+          <div key={idx} className="flex items-center gap-1 bg-slate-600 text-white p-1 rounded">
             <span>{i.name} x {i.qty}</span>
             <span>= Rs {i.qty * i.price + (i.addons?.reduce((a, ad) => a + (ad.price || 0), 0) || 0)}</span>
             <button onClick={() => removeFromCart(idx)} className="text-red-500 px-1">x</button>
